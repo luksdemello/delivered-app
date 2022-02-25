@@ -1,0 +1,22 @@
+insert into
+  tb_orders(
+    address,
+    latitude,
+    longitude,
+    moment,
+    status
+  )
+values(
+  '@P1@',
+  @P2@,
+  @P3@,
+  '@P4@',
+  '@P5@'
+)
+returning
+  id,
+  address,
+  latitude,
+  longitude,
+  moment,
+  status;

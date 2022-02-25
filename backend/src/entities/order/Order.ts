@@ -3,14 +3,14 @@ import { OrderStatus } from "./OrderStatus";
 
 
 class Order {
-  id?: number;
   address: string;
   latitude: number;
   longitude: number;
-  moment: Date;
+  moment: string;
   status: OrderStatus;
-  total: number;
-  products: Product[];
+  id?: number;
+  total?: number;
+  products?: Product[];
 
   constructor({ id, address, latitude, longitude, moment, status, total, products }: Order) {
     this.id = id;

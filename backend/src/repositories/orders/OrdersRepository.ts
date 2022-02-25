@@ -11,7 +11,7 @@ class OrdersRepository implements IOrdersRepository {
   async findAll(): Promise<Order[]> {
     const orders: Order[] = [];
 
-    const query = sqlService.get(`${this.source}/find-all.sql`, []);
+    const query = sqlService.get(`${this.source}/find_all.sql`, []);
 
     const result = await postgresPool.query(query, null);
 
@@ -21,6 +21,34 @@ class OrdersRepository implements IOrdersRepository {
     }
 
     return orders;
+  }
+
+  async create(data: Order): Promise<Order> {
+    const params: any[] = [];
+
+    params.push(data.address),
+      params.push(data.latitude);
+    params.push(data.longitude);
+    params.push(data.moment);
+    params.push(data.status);
+
+    const query = sqlService.get(`${this.source}/create.sql`, params);
+    const result = await postgresPool.query(query, null);
+
+    const order = orderParser.postgresParser(result.rows[0]);
+
+    return order!;
+
+  }
+
+  async inserProduct(orderId: number, productId: number): Promise<void> {
+    const params: any[] = [];
+
+    params.push(orderId);
+    params.push(productId);
+
+    const query = sqlService.get(`${this.source}/insert_product.sql`, params);
+    await postgresPool.query(query, null);
   }
 }
 

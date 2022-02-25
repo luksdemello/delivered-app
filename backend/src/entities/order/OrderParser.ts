@@ -10,10 +10,13 @@ class OrderParser {
 
       const products: Product[] = [];
 
-      for (const row of postgres['products']) {
-        const product = productParser.postgresParser(row);
-        products.push(product!);
+      if (validations.isNotParamEmpty(postgres['products'])) {
+        for (const row of postgres['products']) {
+          const product = productParser.postgresParser(row);
+          products.push(product!);
+        }
       }
+
 
       return new Order({
         id: postgres['id'],
@@ -23,7 +26,7 @@ class OrderParser {
         moment: postgres['moment'],
         status: postgres['status'],
         total: 0,
-        products
+        products: products.length > 0 ? products : undefined
       })
     }
     return null;
