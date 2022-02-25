@@ -1,3 +1,4 @@
+import { Product } from "../product/Product";
 import { OrderStatus } from "./OrderStatus";
 
 
@@ -9,8 +10,9 @@ class Order {
   moment: Date;
   status: OrderStatus;
   total: number;
+  products: Product[];
 
-  constructor({ id, address, latitude, longitude, moment, status, total }: Order) {
+  constructor({ id, address, latitude, longitude, moment, status, total, products }: Order) {
     this.id = id;
     this.address = address;
     this.latitude = latitude;
@@ -18,6 +20,7 @@ class Order {
     this.moment = moment;
     this.status = status;
     this.total = total;
+    this.products = products;
   }
 }
 

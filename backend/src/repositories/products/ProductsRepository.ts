@@ -14,7 +14,7 @@ class ProductsRepository implements IProductsRepository {
   async findAll(): Promise<Product[]> {
     const products: Product[] = [];
 
-    const query = sqlService.get(`${this.source}//list-all.sql`, []);
+    const query = sqlService.get(`${this.source}/find-all.sql`, []);
 
     const result = await postgresPool.query(query, null);
 

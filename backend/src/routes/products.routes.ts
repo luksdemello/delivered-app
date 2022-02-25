@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { listAllProductsController } from "../use_cases/products/list_all";
+import { findAllProductsController } from "../use_cases/products/find_all";
 
 const productsRouter = Router();
 
 productsRouter.get('/', (request, response) => {
-  return listAllProductsController.handler(request, response);
+  return findAllProductsController.handler(request, response);
 })
 
 export { productsRouter }

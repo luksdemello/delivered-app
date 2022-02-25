@@ -3,7 +3,7 @@ import { IProductsRepository } from "../../../repositories/products/IProductsRes
 
 
 
-class ListAllProductsUseCase {
+class FindAllProductsUseCase {
   constructor(private productsRepository: IProductsRepository) { }
 
   async execute(): Promise<Product[]> {
@@ -13,4 +13,4 @@ class ListAllProductsUseCase {
   }
 }
 
-export { ListAllProductsUseCase }
+export { FindAllProductsUseCase }

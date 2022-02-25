@@ -5,6 +5,6 @@ select
   description,
   image_uri
 from 
-  tb_products
+  tb_products 
 order by
   name;
