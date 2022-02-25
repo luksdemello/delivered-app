@@ -50,6 +50,11 @@ class OrdersRepository implements IOrdersRepository {
     const query = sqlService.get(`${this.source}/insert_product.sql`, params);
     await postgresPool.query(query, null);
   }
+
+  async update(id: string): Promise<void> {
+    const query = sqlService.get(`${this.source}/update.sql`, [id]);
+    await postgresPool.query(query, null);
+  }
 }
 
 export { OrdersRepository }
