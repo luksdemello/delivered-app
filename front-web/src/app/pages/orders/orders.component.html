@@ -16,4 +16,20 @@
     </ul>
 
   </header>
+
+  <div class="orders-list-container">
+
+    <div class="orders-list-items" *ngFor="let product of products">
+      <div class="order-card-container">
+        <h3 class="order-card-title">{{ product.name }}</h3>
+        <img class="order-card-image" [src]="product.imageUri">
+        <h3 class="order-card-price">{{ product.price }}</h3>
+        <div class="order-card-desciption">
+          <h3>Descricao</h3>
+          <p>{{product.description}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
