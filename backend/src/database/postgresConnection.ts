@@ -5,7 +5,8 @@ const pool = new Pool({
   port: Number(process.env.DATABASE_PORT),
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE_DB,
-  user: process.env.DATABASE_USER
+  user: process.env.DATABASE_USER,
+  ssl: true
 })
 
 export { pool };
