@@ -19,7 +19,7 @@
   font-size: 55px;
   line-height: 58px;
   letter-spacing: -0.015em;
-  color: var(--dark-color);
+  color: $darkColor;
   margin-bottom: 40px !important;
 }
 
@@ -28,7 +28,7 @@
   font-size: 24px;
   line-height: 33px;
   letter-spacing: -0.015em;
-  color: var(--secondary-color);
+  color: $secondColor;
   margin-bottom: 30px;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .home-btn-order:hover {
-  background-color: var(--primary-hover-color);
+  background-color: $primaryHover;
   transform: scale(1.01);
 }
 
