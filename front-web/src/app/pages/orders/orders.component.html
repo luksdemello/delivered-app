@@ -2,28 +2,27 @@
   <header class="orders-steps-container">
     <div class="orders-steps-content">
       <h1 class="steps-title">SIGA AS <br> ETAPAS</h1>
+
+      <ul class="steps-items">
+        <li>
+          <span class="steps-number">1</span>
+          Selecione os produtos e localização
+        </li>
+        <li>
+          <span class="steps-number">2</span>
+          Depois clique em <strong>"ENVIAR PEDIDO"</strong>
+        </li>
+      </ul>
     </div>
-
-    <ul class="steps-items">
-      <li>
-        <span class="steps-number">1</span>
-        Selecione os produtos e localização
-      </li>
-      <li>
-        <span class="steps-number">2</span>
-        Depois clique em <strong>"ENVIAR PEDIDO"</strong>
-      </li>
-    </ul>
-
   </header>
 
   <div class="orders-list-container">
 
-    <div class="orders-list-items" *ngFor="let product of products">
-      <div class="order-card-container">
+    <div class="orders-list-items">
+      <div class="order-card-container" *ngFor="let product of products">
         <h3 class="order-card-title">{{ product.name }}</h3>
         <img class="order-card-image" [src]="product.imageUri">
-        <h3 class="order-card-price">{{ product.price }}</h3>
+        <h3 class="order-card-price">{{ product.price | currency: 'R$ ' }}</h3>
         <div class="order-card-desciption">
           <h3>Descricao</h3>
           <p>{{product.description}}</p>

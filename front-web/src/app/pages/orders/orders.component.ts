@@ -23,7 +23,6 @@ export class OrdersComponent implements OnInit {
   getProducts(): void {
     this.productsService.getProducts().subscribe(result => {
       this.products = result;
-      console.log(this.products)
     })
   }
 
