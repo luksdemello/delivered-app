@@ -1,0 +1,19 @@
+@import '../../../assets/styles/variables.scss';
+
+.main-navbar {
+  height: 70px;
+  background-color: $primaryColor;
+  padding-left: 45px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  font-weight: bold;
+  color: #FFFFFF;
+  font-size: 24px;
+  line-height: 33px;
+  font-family: 'Open Sans';
+  letter-spacing: -0.015em;
+  margin-left: 12px;
+}
