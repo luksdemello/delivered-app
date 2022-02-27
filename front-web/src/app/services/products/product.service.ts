@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IProduct } from 'src/app/models/product';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +17,9 @@ export class ProductService {
 
   getProducts(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(this.url + '/products');
+  }
+
+  getlocals(local: string) {
+    return this.http.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${local}.json?access_token=${environment.mapBoxToken}`);
   }
 }

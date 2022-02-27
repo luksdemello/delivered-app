@@ -31,4 +31,25 @@
     </div>
 
   </div>
+
+  <div class="order-location-container">
+    <div class="order-location-content">
+      <h3 class="order-location-title">Selecione onde o pedido deve ser entregue:</h3>
+
+      <div class="filter-container">
+        <div class="input-filter">
+          <input type="text" placeholder="Endereço de entrega" [(ngModel)]="inputValue"
+            (keyup.enter)="applyFilter($event)">
+          <fa-icon [icon]="search" style="color: #CCC;"></fa-icon>
+        </div>
+
+        <div class="filter-options" *ngIf="places.length > 0">
+          <div *ngFor="let place of places" class="option-item" (click)="selectPlace(place)">{{place.name}}</div>
+        </div>
+      </div>
+
+      <div id="map"></div>
+    </div>
+
+  </div>
 </div>
