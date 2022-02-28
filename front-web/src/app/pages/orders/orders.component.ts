@@ -4,9 +4,8 @@ import { ProductService } from 'src/app/services/products/product.service';
 import * as leaflet from 'leaflet';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
-import { Orders, ProductId } from 'src/app/models/orders';
+import { Orders } from 'src/app/models/orders';
 import { ToastrService } from 'ngx-toastr';
-import { Icon } from 'leaflet'
 
 @Component({
   selector: 'app-orders',
