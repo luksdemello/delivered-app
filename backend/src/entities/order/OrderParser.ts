@@ -25,7 +25,9 @@ class OrderParser {
         longitude: postgres['longitude'],
         moment: postgres['moment'],
         status: postgres['status'],
-        total: 0,
+        total: products.reduce((acc, curr) => {
+          return acc + curr.price;
+        }, 0),
         products: products.length > 0 ? products : undefined
       })
     }
