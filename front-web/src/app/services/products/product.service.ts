@@ -21,7 +21,7 @@ export class ProductService {
   }
 
   getlocals(local: string) {
-    return this.http.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${local}.json?access_token=${process.env.TOKEN_MAP}`);
+    return this.http.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${local}.json?access_token=${environment.TOKEN_MAP}`);
   }
 
   saveOrder(payload: Orders): Observable<any> {
