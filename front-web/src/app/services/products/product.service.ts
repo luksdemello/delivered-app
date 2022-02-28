@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductService {
 
-  private url: string = 'http://localhost:3000'
+  private url: string = 'https://app-deliver-node.herokuapp.com'
 
   constructor(
     private http: HttpClient
