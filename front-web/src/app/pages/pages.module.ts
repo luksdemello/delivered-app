@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import localePt from '@angular/common/locales/pt';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 registerLocaleData(localePt);
 
@@ -17,7 +18,8 @@ registerLocaleData(localePt);
   imports: [
     CommonModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot()
   ],
   exports: [
     OrdersComponent,

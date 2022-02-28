@@ -4,6 +4,9 @@ import { ProductService } from 'src/app/services/products/product.service';
 import * as leaflet from 'leaflet';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
+import { Orders, ProductId } from 'src/app/models/orders';
+import { ToastrService } from 'ngx-toastr';
+import { Icon } from 'leaflet'
 
 @Component({
   selector: 'app-orders',
@@ -27,7 +30,8 @@ export class OrdersComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   constructor(
-    private productsService: ProductService
+    private productsService: ProductService,
+    private toastr: ToastrService
   ) {
     this.getProducts();
   }
@@ -48,6 +52,7 @@ export class OrdersComponent implements OnInit, AfterViewInit, OnDestroy {
     this.map = leaflet.map('map', {
       center: this.position,
       zoom: 15,
+
     });
 
 
@@ -122,6 +127,24 @@ export class OrdersComponent implements OnInit, AfterViewInit, OnDestroy {
     return this.selectedProducts.reduce((curr, acc) => {
       return curr + acc.price
     }, 0)
+  }
+
+  onSubmit(): void {
+    const orders: Orders = {
+      latitude: this.position.lat,
+      longitude: this.position.lng,
+      address: this.label,
+      products: this.selectedProducts.map(({ id }) => ({ id }))
+    }
+
+    this.subscription.add(this.productsService.saveOrder(orders).subscribe((result) => {
+      this.toastr.success(`Pedido enviado com sucesso! Nº ${result.id}`, '', { progressBar: true, timeOut: 3000 })
+    },
+      (error) => {
+        this.toastr.error('Erro ao efetuar Pedido', '', { progressBar: true, timeOut: 3000 })
+      }
+    ))
+
   }
 
   ngOnDestroy(): void {

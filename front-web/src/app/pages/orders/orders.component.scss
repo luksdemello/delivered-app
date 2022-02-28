@@ -264,6 +264,11 @@
   transform: scale(1.01);
 }
 
+.order-summary-make-order:disabled {
+  background-color: #CCC;
+  cursor: not-allowed;
+}
+
 .input-filter {
   width: 85%;
   height: 60px;

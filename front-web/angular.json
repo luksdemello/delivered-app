@@ -52,7 +52,8 @@
             "styles": [
               "./node_modules/leaflet/dist/leaflet.css",
               "src/styles.scss",
-              "src/assets/styles/styles.scss"
+              "src/assets/styles/styles.scss",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },

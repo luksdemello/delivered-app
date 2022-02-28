@@ -66,7 +66,8 @@
           VALOR TOTAL
         </span>
       </div>
-      <button class="order-summary-make-order">FAZER PEDIDO</button>
+      <button class="order-summary-make-order" (click)="onSubmit()" [disabled]="selectedProducts.length == 0">FAZER
+        PEDIDO</button>
     </div>
   </div>
 </div>
