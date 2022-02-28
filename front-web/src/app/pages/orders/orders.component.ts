@@ -1,24 +1,43 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/products/product.service';
 import * as leaflet from 'leaflet';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.scss']
 })
-export class OrdersComponent implements OnInit, AfterViewInit {
+export class OrdersComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private map: any;
   search = faSearch;
   position: any = {
-    lat: -22.853522085093804,
-    lng: -47.22914238944137
+    lat: -23.6821604,
+    lng: -46.8754824
   }
   inputValue: string = '';
+  label: string = 'São Paulo - SP'
   places: any[] = []
+  subscription: Subscription = new Subscription();
+  products: Product[] = [];
+  selectedProducts: Product[] = [];
+
+
+  constructor(
+    private productsService: ProductService
+  ) {
+    this.getProducts();
+  }
+
+  ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    this.initMap();
+  }
 
   private initMap(): void {
     if (this.map) {
@@ -39,7 +58,7 @@ export class OrdersComponent implements OnInit, AfterViewInit {
     });
 
     const marker = leaflet.marker(this.position);
-    marker.bindPopup(this.inputValue);
+    marker.bindPopup(this.label);
 
     leaflet.control.attribution()
 
@@ -47,33 +66,16 @@ export class OrdersComponent implements OnInit, AfterViewInit {
     marker.addTo(this.map);
   }
 
-
-  products: Product[] = [];
-
-  constructor(
-    private productsService: ProductService
-  ) {
-    this.getProducts();
-  }
-
-  ngOnInit(): void {
-  }
-
-  ngAfterViewInit(): void {
-    this.initMap();
-  }
-
   getProducts(): void {
-    this.productsService.getProducts().subscribe(result => {
+    this.subscription.add(this.productsService.getProducts().subscribe(result => {
       this.products = result;
-    })
+    }))
   }
 
 
 
   applyFilter(event: any) {
-    this.productsService.getlocals(event.target.value).subscribe((result: any) => {
-      console.log(result)
+    this.subscription.add(this.productsService.getlocals(event.target.value).subscribe((result: any) => {
       this.places = result.features.map((item: any) => {
         return {
           name: item.place_name,
@@ -83,17 +85,47 @@ export class OrdersComponent implements OnInit, AfterViewInit {
           }
         }
       })
-
-      console.log(this.places)
-    })
+    }))
   }
 
   selectPlace(place: any): void {
     console.log(place)
     this.inputValue = place.name;
+    this.label = place.name;
     this.position = place.coordinates;
     this.places = [];
     this.initMap();
+  }
+
+  onSelectProduct(product: Product): void {
+    const isAlreadySelected = this.selectedProducts.some(item => item.id === product.id);
+
+    if (isAlreadySelected) {
+      const selecteds = this.selectedProducts.filter(item => item.id !== product.id)
+      this.selectedProducts = selecteds;
+    } else {
+      this.selectedProducts.push(product);
+    }
+  }
+
+  isSelected(product: Product): boolean {
+    const selected = this.selectedProducts.find(item => item.id === product.id);
+
+    if (selected) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  getTotal(): number {
+    return this.selectedProducts.reduce((curr, acc) => {
+      return curr + acc.price
+    }, 0)
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

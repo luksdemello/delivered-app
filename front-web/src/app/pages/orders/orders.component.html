@@ -19,7 +19,8 @@
   <div class="orders-list-container">
 
     <div class="orders-list-items">
-      <div class="order-card-container" *ngFor="let product of products">
+      <div class="order-card-container" *ngFor="let product of products" (click)="onSelectProduct(product)"
+        [ngClass]="{'selected': isSelected(product)}">
         <h3 class="order-card-title">{{ product.name }}</h3>
         <img class="order-card-image" [src]="product.imageUri">
         <h3 class="order-card-price">{{ product.price | currency: 'R$ ' }}</h3>
@@ -51,5 +52,21 @@
       <div id="map"></div>
     </div>
 
+  </div>
+
+  <div class="order-summary-container">
+    <div class="order-summary-content">
+      <div>
+        <span class="amount-selected-container">
+          <strong class="amount-selected">{{ selectedProducts.length }}</strong>
+          PEDIDOS SELECIONADOS
+        </span>
+        <span class="order-summary-total">
+          <strong class="amount-selected">{{ getTotal() | currency:'R$ '}}</strong>
+          VALOR TOTAL
+        </span>
+      </div>
+      <button class="order-summary-make-order">FAZER PEDIDO</button>
+    </div>
   </div>
 </div>
