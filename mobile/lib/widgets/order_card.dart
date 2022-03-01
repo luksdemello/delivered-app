@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class OrderCard extends StatelessWidget {
-  OrderCard({Key? key}) : super(key: key);
+class OrderCard extends StatefulWidget {
+  const OrderCard({Key? key}) : super(key: key);
 
+  @override
+  State<OrderCard> createState() => _OrderCardState();
+}
+
+class _OrderCardState extends State<OrderCard> {
   final List<String> pedidos = ['produto 1', 'produto 2', 'produto 3'];
 
   double value = 35.9;
