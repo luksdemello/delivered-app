@@ -22,4 +22,15 @@ class DeliverRepository implements IDeliverRepository {
       throw Error();
     }
   }
+
+  @override
+  Future<void> updateOrder(int id) async {
+    try {
+      final response =
+          await http.patch(Uri.parse('$_baseUrl/orders/$id/delivered'));
+    } catch (e) {
+      print(e);
+      throw Error();
+    }
+  }
 }

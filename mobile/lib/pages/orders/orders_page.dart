@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
 import 'package:mobile/models/order.dart';
+import 'package:mobile/pages/order_detail/order_detail_page.dart';
 import 'package:mobile/pages/orders/orders_controller.dart';
 import 'package:mobile/widgets/delivery_appbar.dart';
 import 'package:mobile/widgets/order_card.dart';
@@ -19,8 +20,15 @@ class OrdersPage extends GetView<OrdersController> {
             itemCount: state.length,
             itemBuilder: (_, index) {
               final Order order = state[index];
-              return OrderCard(
-                order: order,
+              return GestureDetector(
+                onTap: () {
+                  Get.to(
+                    OrderDetailPage(order: state[index]),
+                  );
+                },
+                child: OrderCard(
+                  order: order,
+                ),
               );
             },
           ),
