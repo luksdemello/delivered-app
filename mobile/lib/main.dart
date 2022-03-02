@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/pages/home/home_page.dart';
+import 'package:mobile/pages/orders/orders_binding.dart';
 import 'package:mobile/pages/orders/orders_page.dart';
 
 void main() {
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/orders',
           page: () => const OrdersPage(),
+          binding: OrdersBinding(),
         )
       ],
     );

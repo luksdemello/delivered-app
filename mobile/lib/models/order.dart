@@ -24,15 +24,17 @@ class Order {
 
   factory Order.fromMap(Map<String, dynamic> map) {
     return Order(
-      id: map['id'] ?? '',
+      id: map['id'] ?? 0,
       address: map['address'] ?? '',
-      latitude: map['latitude'] ?? '',
-      longitude: map['longitude'] ?? '',
+      latitude: map['latitude'] ?? 0.0,
+      longitude: map['longitude'] ?? 0.0,
       moment: map['moment'] ?? '',
       status: map['status'] ?? '',
-      total: map['total'] ?? '',
-      products:
-          map['products']?.map((product) => Product.fromMap(product)) ?? [],
+      total: map['total']?.toDouble() ?? 0.0,
+      products: map['products']
+              ?.map<Product>((product) => Product.fromMap(product))
+              .toList() ??
+          [],
     );
   }
 

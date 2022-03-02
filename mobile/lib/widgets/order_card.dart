@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:jiffy/jiffy.dart';
+import 'package:mobile/models/order.dart';
 
-class OrderCard extends StatefulWidget {
-  const OrderCard({Key? key}) : super(key: key);
+class OrderCard extends StatelessWidget {
+  final Order order;
 
-  @override
-  State<OrderCard> createState() => _OrderCardState();
-}
-
-class _OrderCardState extends State<OrderCard> {
-  final List<String> pedidos = ['produto 1', 'produto 2', 'produto 3'];
+  OrderCard({
+    Key? key,
+    required this.order,
+  }) : super(key: key);
 
   double value = 35.9;
 
@@ -20,7 +20,7 @@ class _OrderCardState extends State<OrderCard> {
     );
 
     return Text(
-      formatCurrency.format(value),
+      formatCurrency.format(order.total),
       style: const TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.bold,
@@ -30,7 +30,11 @@ class _OrderCardState extends State<OrderCard> {
   }
 
   List<Text> renderProducts() {
-    return pedidos.map((e) => Text(e)).toList();
+    return order.products.map((e) => Text(e.name)).toList();
+  }
+
+  getDate(String date) {
+    return Jiffy(date).fromNow();
   }
 
   @override
@@ -49,9 +53,9 @@ class _OrderCardState extends State<OrderCard> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    'PEDIDO 1',
-                    style: TextStyle(
+                  Text(
+                    'PEDIDO ${order.id}',
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
@@ -59,7 +63,7 @@ class _OrderCardState extends State<OrderCard> {
                   getValue(),
                 ],
               ),
-              const Text('Há 27 min'),
+              Text(getDate(order.moment)),
               const SizedBox(
                 height: 12,
               ),
@@ -70,6 +74,7 @@ class _OrderCardState extends State<OrderCard> {
                 height: 12,
               ),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: renderProducts(),
               )
             ],
