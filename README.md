@@ -1,5 +1,19 @@
-# Delivery App
-![GitHub](https://img.shields.io/github/license/luksdemello/delivered-app)
+<h1 align="center">
+ Delivery App <br>
+ Node | Angular | Flutter
+</h1>
+
+<p align="center">
+ <img alt="github license" src="https://img.shields.io/github/license/luksdemello/delivered-app" />
+</p>
+
+<p align="center">
+ <a href="#sobre-o-projeto">Sobre</a> | 
+ <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a> | 
+ <a href="#como-executar-o-projeto">Como executar</a> | 
+ <a href="#licença">Licença</a> | 
+ <a href="#autor">Autor</a>
+</p>
 
 # Sobre o Projeto
 
@@ -12,16 +26,17 @@ A aplicação consiste em entrega de pedidos, onde o usuário seleciona o pedido
 O Design do projeto foi feito pela equipe da DevSuperior, onde o mesmo foi projetado em java, react e react-native, mas para afins de estudo eu utilizei o layout e fiz o projeto em node, angular e flutter.
 
 ## Layout Mobile
-![mobile 1](https://user-images.githubusercontent.com/69207514/156283393-78710fcd-a874-4e04-ba33-76125d3df858.png)
-![mobile 2](https://user-images.githubusercontent.com/69207514/156283508-f15ed314-df94-4daa-a367-5c06602f70cd.png)
-![mobile 3](https://user-images.githubusercontent.com/69207514/156283576-804da0c6-d39d-4132-a2ec-b518d4371418.png)
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/69207514/156283393-78710fcd-a874-4e04-ba33-76125d3df858.png" width="300px"/>
+ <img src="https://user-images.githubusercontent.com/69207514/156283508-f15ed314-df94-4daa-a367-5c06602f70cd.png" width="300px"/>
+ <img src="https://user-images.githubusercontent.com/69207514/156283576-804da0c6-d39d-4132-a2ec-b518d4371418.png" width="300px"/>
+</p>
+
 
 ## Layout Web
-![web 1](https://user-images.githubusercontent.com/69207514/156283856-d502726b-f667-477d-8f9d-7d5923aa58a9.png)
-
-![web 2](https://user-images.githubusercontent.com/69207514/156284113-970025b7-3393-4f8d-a783-cb8e9cb163b6.png)
-
-![web 3](https://user-images.githubusercontent.com/69207514/156284116-ddbc2b9d-787d-4332-a504-93f0c81edcde.png)
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/69207514/156283856-d502726b-f667-477d-8f9d-7d5923aa58a9.png""/>
+</p>
 
 # Tecnologias utilizadas
 
